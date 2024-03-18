@@ -10,28 +10,70 @@ local AccelIDMatchTbl = {
     {Name = "rev_id",         Pattern = "0x02 = (%w+)" },
 }
 
-local AccelStreamTestMatchTbl = {
+local Accel1StreamTestMatchTbl = {
     { Name = "accel_average_x_no_rotated", Min = -0.12,    Max = 0.085,    Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_y_no_rotated", Min = -1.1,     Max = -0.7,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_z_no_rotated", Min = -0.6,     Max = -0.2,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
     { Name = "accel_average_x",            Min = -1.1,     Max = -0.7,     Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_y",            Min = -0.035,   Max = 0.085,    Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_z",            Min = -0.6,     Max = -0.2,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
-    { Name = "accel_std_x",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
-    { Name = "accel_std_y",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
-    { Name = "accel_std_z",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+    { Name = "accel_std_x",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "std-dev: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_y",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_z",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
 }
 
-local AccelStreamTestCamMatchTbl = {
+local Accel1StreamTestCamMatchTbl = {
     { Name = "accel_average_x_no_rotated", Min = 0.1,      Max = 0.5,      Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_y_no_rotated", Min = 0.2,      Max = 0.6,      Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_z_no_rotated", Min = -1.05,    Max = -0.65,    Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
     { Name = "accel_average_x",            Min = -0.5,     Max = -0.1,     Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_y",            Min = 0.1,      Max = 0.55,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
     { Name = "accel_average_z",            Min = 0.65,     Max = 1.05,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
-    { Name = "accel_std_x",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
-    { Name = "accel_std_y",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
-    { Name = "accel_std_z",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+    { Name = "accel_std_x",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "std-dev: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_y",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_z",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+}
+
+local Accel2StreamTestMatchTbl = {
+    { Name = "accel_average_x",            Min = -0.085,   Max = 0.12,     Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_average_y",            Min = -1.1,     Max = -0.7,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_average_z",            Min = -0.6,     Max = -0.2,     Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+    { Name = "accel_std_x",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "std-dev: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_y",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_z",                Min = 1e-05,    Max = 0.01,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+}
+
+local Accel2StreamTestCamMatchTbl = {
+    { Name = "accel_average_x",            Min = -0.5,     Max = -0.1,     Uint = "g",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_average_y",            Min = 0.2,      Max = 0.6,      Uint = "g",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_average_z",            Min = -1.05,    Max = -0.65,    Uint = "g",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+    { Name = "accel_std_x",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "std-dev: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_y",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "accel_std_z",                Min = 1e-05,    Max = 0.02,     Uint = "g",   Pattern = "std-dev: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+}
+
+local Gyro1StreamTestMatchTbl = {
+    { Name = "gyro_average_x",            Min = -5,       Max = 5,        Uint = "dps",   Pattern = "average: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "gyro_average_y",            Min = -5,       Max = 5,        Uint = "dps",   Pattern = "average: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "gyro_average_z",            Min = -5,       Max = 5,        Uint = "dps",   Pattern = "average: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+    { Name = "gyro_std_x",                Min = 1e-05,    Max = 0.4,      Uint = "dps",   Pattern = "std-dev: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "gyro_std_y",                Min = 1e-05,    Max = 0.4,      Uint = "dps",   Pattern = "std-dev: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "gyro_std_z",                Min = 1e-05,    Max = 0.4,      Uint = "dps",   Pattern = "std-dev: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
+    { Name = "gyro_pos_mode_x",           Min = nil,      Max = nil,      Uint = nil,     Pattern = "pos-mode: x = ([%w.]+), y = [%w.]+, z = [%w.]+", Value = nil },
+    { Name = "gyro_pos_mode_y",           Min = nil,      Max = nil,      Uint = nil,     Pattern = "pos-mode: x = [%w.]+, y = ([%w.]+), z = [%w.]+", Value = nil },
+    { Name = "gyro_pos_mode_z",           Min = nil,      Max = nil,      Uint = nil,     Pattern = "pos-mode: x = [%w.]+, y = [%w.]+, z = ([%w.]+)", Value = nil },
+    { Name = "gyro_neg_mode_x",           Min = nil,      Max = nil,      Uint = nil,     Pattern = "neg-mode: x = ([%w.]+), y = [%w.]+, z = [%w.]+", Value = nil },
+    { Name = "gyro_neg_mode_y",           Min = nil,      Max = nil,      Uint = nil,     Pattern = "neg-mode: x = [%w.]+, y = ([%w.]+), z = [%w.]+", Value = nil },
+    { Name = "gyro_neg_mode_z",           Min = nil,      Max = nil,      Uint = nil,     Pattern = "neg-mode: x = [%w.]+, y = [%w.]+, z = ([%w.]+)", Value = nil },
+    { Name = "gyro_quad_mode_response_x", Min = nil,      Max = nil,      Uint = nil,     Pattern = "Quad Mode-response: x = ([%w.]+), y = [%w.]+, z = [%w.]+", Value = nil },
+    { Name = "gyro_quad_mode_response_y", Min = nil,      Max = nil,      Uint = nil,     Pattern = "Quad Mode-response: x = [%w.]+, y = ([%w.]+), z = [%w.]+", Value = nil },
+    { Name = "gyro_quad_mode_response_z", Min = nil,      Max = nil,      Uint = nil,     Pattern = "Quad Mode-response: x = [%w.]+, y = [%w.]+, z = ([%w.]+)", Value = nil },
+}
+
+local Gyro1StreamTestCamMatchTbl = {
+    { Name = "gyro_std_x",                Min = 1e-05,    Max = 0.75,     Uint = "dps",   Pattern = "std-dev: X = ([%w.]+), Y = [%w.]+, Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "gyro_std_y",                Min = 1e-05,    Max = 0.75,     Uint = "dps",   Pattern = "std-dev: X = [%w.]+, Y = ([%w.]+), Z = [%w.]+, T = [%w.]+", Value = nil },
+    { Name = "gyro_std_z",                Min = 1e-05,    Max = 0.75,     Uint = "dps",   Pattern = "std-dev: X = [%w.]+, Y = [%w.]+, Z = ([%w.]+), T = [%w.]+", Value = nil },
 }
 
 local function GetAccelIDMatchPattern(Name)
@@ -90,7 +132,7 @@ function AccelGetAsicID(Args)
     Shell("sensorreg -s "..string.lower(Args.Name).." --get asic_id")
 end
 
-function AccelStreamTest(Args)
+function Accel1StreamTest(Args)
     Shell("sensor -s accel1 --set rate 800")
     Shell("sensor -s accel1 --set dynamic_range 16")
     Shell("sensor -s accel1 --set bw 400")
